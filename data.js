@@ -1,5 +1,4 @@
-var moviesData =
-[
+var moviesData =[
     {
         "id": 1,
         "title": "The Shawshank Redemption",
@@ -57,3 +56,4 @@ var moviesData =
         "seen": "F"
     }
 ];
+ 

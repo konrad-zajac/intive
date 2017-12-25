@@ -29,3 +29,7 @@ function SeenLength(obj)
 }
 let Seen = SeenLength(moviesData);
 document.getElementById("moviesCounterSeen").innerHTML = Seen;
+    var node = document.createElement("LI");
+    var textnode = document.createTextNode("Water");
+    node.appendChild(textnode);
+document.getElementById("moviesList").appendChild(node);

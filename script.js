@@ -1,10 +1,8 @@
-
-
-
+//filmy all
 function objectLength(obj) {
   var result = 0;
-  for(var prop in obj) {
-    if (obj.hasOwnProperty(prop)) {
+  for(var i in obj) {
+    if (obj.hasOwnProperty(i)) {
       result++;
     }
 
@@ -13,14 +11,13 @@ function objectLength(obj) {
 }
 let moviesCount =objectLength(moviesData);
 document.getElementById("moviesCounterAll").innerHTML = moviesCount;
-
+//filmy seen
 function SeenLength(obj)
 {
 	var seen_result = 0;
-	for (var prop in obj)
+	for (var i in obj)
 	{
-		console.log(obj[prop]["seen"] == "T")
-		if (obj[prop]["seen"] == "T")
+		if (obj[i]["seen"] == "T")
 		{
 			seen_result++;
 		}
@@ -29,7 +26,32 @@ function SeenLength(obj)
 }
 let Seen = SeenLength(moviesData);
 document.getElementById("moviesCounterSeen").innerHTML = Seen;
-    var node = document.createElement("LI");
-    var textnode = document.createTextNode("Water");
-    node.appendChild(textnode);
-document.getElementById("moviesList").appendChild(node);
+
+//dodawanie do ul
+function getTitle(obj)
+{
+	var title = [];
+	var genre = [];
+	var summary = [];
+
+	for (var i in obj)
+	{	
+		title[i] = obj[i]["title"] + '\n';
+		genre[i] = obj[i]["genre"]+ '\n';
+		summary[i] = obj[i]["summary"] +'\n';
+
+		let htmlstring = "title: " + title[i] +'\n'+ " genre: " + genre[i] + " summary: " + summary[i]
+
+		var node = document.createElement("LI" );
+		var br = document.createElement("br")
+		node.appendChild(br);	
+		var textnode = document.createTextNode(htmlstring);
+		node.appendChild(textnode);
+		document.getElementById("moviesList").appendChild(node);
+
+	}
+
+}
+let title_to_list = getTitle(moviesData);
+
+   

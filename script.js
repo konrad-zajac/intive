@@ -28,30 +28,84 @@ let Seen = SeenLength(moviesData);
 document.getElementById("moviesCounterSeen").innerHTML = Seen;
 
 //dodawanie do ul
-function getTitle(obj)
+function getAllInfo(obj)
 {
+	var id = [];
+	var year = [];
 	var title = [];
 	var genre = [];
 	var summary = [];
+	var seen = [];
 
 	for (var i in obj)
 	{	
-		title[i] = obj[i]["title"] + '\n';
-		genre[i] = obj[i]["genre"]+ '\n';
-		summary[i] = obj[i]["summary"] +'\n';
 
-		let htmlstring = "title: " + title[i] +'\n'+ " genre: " + genre[i] + " summary: " + summary[i]
+		id[i] = obj[i]["id"];
+		year[i] = obj[i]["year"];
+		title[i] = obj[i]["title"];
+		genre[i] = obj[i]["genre"];
+		summary[i] = obj[i]["summary"]; 
+		seen[i] = obj[i]["seen"]; 
+
+		let string_id = "id:" + id[i];
+		let string_year = "year:" + year[i];
+		let string_title = "title:" + title[i];
+		let string_genre = "genre:" + genre[i];
+		let string_summary = "summary:" + summary[i];
+		let string_seen = "seen:" + seen[i];
+
 
 		var node = document.createElement("LI" );
-		var br = document.createElement("br")
-		node.appendChild(br);	
-		var textnode = document.createTextNode(htmlstring);
+
+		var textnode = document.createTextNode(string_id);
 		node.appendChild(textnode);
+
+
+		var br = document.createElement("br")
+		node.appendChild(br);
+
+
+		var textnode = document.createTextNode(string_year);
+		node.appendChild(textnode);
+
+
+		var br = document.createElement("br")
+		node.appendChild(br);
+
+		var textnode = document.createTextNode(string_title);
+		node.appendChild(textnode);
+
+		var br = document.createElement("br")
+		node.appendChild(br);
+
+		var textnode = document.createTextNode(string_genre);
+		node.appendChild(textnode);
+
+		var br = document.createElement("br")
+		node.appendChild(br);
+
+		var textnode = document.createTextNode(string_summary);
+		node.appendChild(textnode);
+
+		var br = document.createElement("br")
+		node.appendChild(br);
+
+		
+		var textnode = document.createTextNode(string_seen);
+		node.appendChild(textnode);
+
+		var br = document.createElement("br")
+		node.appendChild(br);
+
+
+
+
 		document.getElementById("moviesList").appendChild(node);
+		document.getElementById("moviesList").appendChild(br);
 
 	}
 
 }
-let title_to_list = getTitle(moviesData);
+let title_to_list = getAllInfo(moviesData);
 
    

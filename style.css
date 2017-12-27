@@ -1,0 +1,23 @@
+.liczniki
+{
+    font-weight: bold;
+ 
+}
+#moviesListContainer
+{
+	margin-top: 100px;
+}
+li
+{
+	    text-align: center;
+
+}
+.ziel
+{
+	color: green;
+}
+li:hover
+{
+    text-decoration: underline;
+
+}

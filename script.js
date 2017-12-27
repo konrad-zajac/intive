@@ -1,32 +1,19 @@
-//filmy all
+//filmy all i seen
 function objectLength(obj) {
   var result = 0;
-  for(var i in obj) {
-    if (obj.hasOwnProperty(i)) {
-      result++;
-    }
-
-  }
-  return result;
-}
-let moviesCount =objectLength(moviesData);
-document.getElementById("moviesCounterAll").innerHTML = moviesCount;
-//filmy seen
-function SeenLength(obj)
-{
-	var seen_result = 0;
-	for (var i in obj)
+    var seen_result = 0;
+  for(var i in obj)
+  {
+	if (obj[i]["seen"] == "T")
 	{
-		if (obj[i]["seen"] == "T")
-		{
-			seen_result++;
-		}
+		seen_result++;
 	}
-	return seen_result;
+      result++;
+  }
+document.getElementById("moviesCounterAll").innerHTML = result;
+document.getElementById("moviesCounterSeen").innerHTML = seen_result;
 }
-let Seen = SeenLength(moviesData);
-document.getElementById("moviesCounterSeen").innerHTML = Seen;
-
+objectLength(moviesData);
 //dodawanie do ul
 function getAllInfo(obj)
 {
@@ -60,10 +47,8 @@ function getAllInfo(obj)
 		var textnode = document.createTextNode(string_id);
 		node.appendChild(textnode);
 
-
-		var br = document.createElement("br")
+		var br = document.createElement("br");
 		node.appendChild(br);
-
 
 		var textnode = document.createTextNode(string_year);
 		node.appendChild(textnode);
@@ -90,22 +75,57 @@ function getAllInfo(obj)
 		var br = document.createElement("br")
 		node.appendChild(br);
 
-		
-		var textnode = document.createTextNode(string_seen);
-		node.appendChild(textnode);
-
-		var br = document.createElement("br")
-		node.appendChild(br);
-
-
-
-
+		if (obj[i]["seen"] == "T")	
+		{
+			node.classList.add("seen","ziel");
+		}
+		node.setAttribute("id", "jeden_ul" + [i]); 
 		document.getElementById("moviesList").appendChild(node);
-		document.getElementById("moviesList").appendChild(br);
+		var btn = document.createElement("BUTTON");
+
+		if(obj[i]["seen"] == "T")
+		{
+		var t = document.createTextNode("Movie seen");
+		}
+		else
+		{
+			var t = document.createTextNode("Movie not seen");
+		}
+		btn.appendChild(t);
+		btn.setAttribute("id", "jeden_btn" + [i] ); 
+		btn.setAttribute("onclick", "change_status(" + [i] + ")");
+
+		document.getElementById("jeden_ul" + [i]).appendChild(btn);
 
 	}
-
+	
+	var elems = document.getElementsByClassName('seen');
+	for(var i = 0; i < elems.length; i++) {
+		elems[i].setAttribute("class", "ziel"); 
+	}
+	
 }
 let title_to_list = getAllInfo(moviesData);
+
+function change_status(i)
+{
+	
+	var node = document.getElementById("jeden_ul" + [i]);
+	var buttin = document.getElementById("jeden_btn" + [i]);
+	if (node.classList.contains("seen"))
+	 {
+		node.classList.remove("seen");
+			node.classList.remove("ziel");
+		node.style.color = null;
+		buttin.childNodes[0].nodeValue = "Movie not seen";
+	}
+	else
+	 {
+		node.classList.add("seen");
+		node.classList.add("ziel");
+		node.style.color = 'green';
+		buttin.childNodes[0].nodeValue = "Movie seen";
+	}
+}
 
    

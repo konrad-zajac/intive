@@ -21,3 +21,8 @@ li:hover
     text-decoration: underline;
 
 }
+div#wrapper ul 
+{
+	margin-top: 100px;
+  list-style-type: none;
+}

@@ -1,7 +1,8 @@
 //filmy all i seen
+
 function objectLength(obj) {
-  var result = 0;
-    var seen_result = 0;
+var seen_result = 0;
+ var result = 0;   
   for(var i in obj)
   {
 	if (obj[i]["seen"] == "T")
@@ -10,10 +11,13 @@ function objectLength(obj) {
 	}
       result++;
   }
+
 document.getElementById("moviesCounterAll").innerHTML = result;
-document.getElementById("moviesCounterSeen").innerHTML = seen_result;
+return seen_result;
 }
-objectLength(moviesData);
+var SeenResult = objectLength(moviesData);
+   document.getElementById("moviesCounterSeen").innerHTML = SeenResult;
+
 //dodawanie do ul
 function getAllInfo(obj)
 {
@@ -40,7 +44,6 @@ function getAllInfo(obj)
 		let string_genre = "genre:" + genre[i];
 		let string_summary = "summary:" + summary[i];
 		let string_seen = "seen:" + seen[i];
-
 
 		var node = document.createElement("LI" );
 
@@ -94,11 +97,8 @@ function getAllInfo(obj)
 		btn.appendChild(t);
 		btn.setAttribute("id", "jeden_btn" + [i] ); 
 		btn.setAttribute("onclick", "change_status(" + [i] + ")");
-
 		document.getElementById("jeden_ul" + [i]).appendChild(btn);
-
 	}
-	
 	var elems = document.getElementsByClassName('seen');
 	for(var i = 0; i < elems.length; i++) {
 		elems[i].setAttribute("class", "ziel"); 
@@ -109,15 +109,18 @@ let title_to_list = getAllInfo(moviesData);
 
 function change_status(i)
 {
-	
 	var node = document.getElementById("jeden_ul" + [i]);
 	var buttin = document.getElementById("jeden_btn" + [i]);
-	if (node.classList.contains("seen"))
+	var mSC = document.getElementById("moviesCounterSeen").innerHTML;
+	if (node.classList.contains("ziel"))
 	 {
 		node.classList.remove("seen");
 			node.classList.remove("ziel");
 		node.style.color = null;
 		buttin.childNodes[0].nodeValue = "Movie not seen";
+	SeenResult--;
+			
+			   document.getElementById("moviesCounterSeen").innerHTML = SeenResult;
 	}
 	else
 	 {
@@ -125,7 +128,10 @@ function change_status(i)
 		node.classList.add("ziel");
 		node.style.color = 'green';
 		buttin.childNodes[0].nodeValue = "Movie seen";
+		SeenResult++;
+		   document.getElementById("moviesCounterSeen").innerHTML = SeenResult;
+
 	}
 }
 
-   
+

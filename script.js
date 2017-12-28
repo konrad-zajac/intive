@@ -1,61 +1,62 @@
-//filmy all i seen
-
-function objectLength(obj) {
-var seen_result = 0;
- var result = 0;   
+//funkcja oblicza ile jest widzianych filmow
+function objectLength(obj)
+ {
+var flaga_widzianych_filmow = 0;
+ //for przeglada obiekty z tablicy 0,1,2..7
   for(var i in obj)
   {
 	if (obj[i]["seen"] == "T")
+		//jezeli obiekt ma atrybut "seen" == "T" to znaczy ze byl widziany i zwieksza odpowiednia flage
 	{
-		seen_result++;
+		flaga_widzianych_filmow++;
 	}
-      result++;
   }
-
-document.getElementById("moviesCounterAll").innerHTML = result;
-return seen_result;
+return flaga_widzianych_filmow;
 }
-var SeenResult = objectLength(moviesData);
+//zmienna bierze to co zwraca funkcja "objectLength" kiedy damy jej tablice
+var SeenResult = objectLength(moviesData);   
    document.getElementById("moviesCounterSeen").innerHTML = SeenResult;
-
-//dodawanie do ul
+//dalsza czesc zadanie 5, czyli wytworzenie listy filmow
 function getAllInfo(obj)
 {
+	var flaga_wszystkich_filmow = 0;   
+	//tu jest tworzone 6 tablic, ktore beda sluzyly do przechowywania zmiennych
 	var id = [];
 	var year = [];
 	var title = [];
 	var genre = [];
 	var summary = [];
 	var seen = [];
-
+//for przeglada obiekty z tablicy 0,1,2..7
 	for (var i in obj)
 	{	
-
+		//ta flaga jest zwiekszana dla kazdego filmu
+      flaga_wszystkich_filmow++;
+      //to tych 6 tablic przypisywane sa odpowiednie dane dla kazdego elementu
 		id[i] = obj[i]["id"];
 		year[i] = obj[i]["year"];
 		title[i] = obj[i]["title"];
 		genre[i] = obj[i]["genre"];
 		summary[i] = obj[i]["summary"]; 
 		seen[i] = obj[i]["seen"]; 
-
+		//tworzone sa stringi zawierajace etykiety oraz odpowiednie dane dla kazdego li
 		let string_id = "id:" + id[i];
 		let string_year = "year:" + year[i];
 		let string_title = "title:" + title[i];
 		let string_genre = "genre:" + genre[i];
 		let string_summary = "summary:" + summary[i];
 		let string_seen = "seen:" + seen[i];
-
+		//tworzony jest element <li></li>
 		var node = document.createElement("LI" );
-
+		//dodawany jest id (i kolejne 5 atrybotow) i dodawany do nod'a
 		var textnode = document.createTextNode(string_id);
 		node.appendChild(textnode);
-
+		//po kazdej parze dodawany jest </br>
 		var br = document.createElement("br");
 		node.appendChild(br);
 
 		var textnode = document.createTextNode(string_year);
 		node.appendChild(textnode);
-
 
 		var br = document.createElement("br")
 		node.appendChild(br);
@@ -77,59 +78,62 @@ function getAllInfo(obj)
 
 		var br = document.createElement("br")
 		node.appendChild(br);
-
-		if (obj[i]["seen"] == "T")	
-		{
-			node.classList.add("seen","ziel");
-		}
-		node.setAttribute("id", "jeden_ul" + [i]); 
+		//jezeli obiekt ma atrybut "seen" == "T" to znaczy ze byl widziany
+		//dodawany jest zielony kolor czcionki i pelna tresc buttona sie zmienia
+			if (obj[i]["seen"] == "T")	
+			{
+				node.classList.add("seen");
+				var tresc_buttona = document.createTextNode("Movie seen");
+			}
+			else
+			{
+				var tresc_buttona = document.createTextNode("Movie not seen");
+			}
+		//dodaje unikalny id do li
+		node.setAttribute("id", "jeden_li" + [i]); 
+		//dodaje calego nod'a
 		document.getElementById("moviesList").appendChild(node);
+		//tworzy pojedynczy przycisk
 		var btn = document.createElement("BUTTON");
-
-		if(obj[i]["seen"] == "T")
-		{
-		var t = document.createTextNode("Movie seen");
-		}
-		else
-		{
-			var t = document.createTextNode("Movie not seen");
-		}
-		btn.appendChild(t);
+		//dodaje tresc do przycisku
+		btn.appendChild(tresc_buttona);
+		//dodaje unikalny id do przycisku
 		btn.setAttribute("id", "jeden_btn" + [i] ); 
+		//dodaje wydarzenie "onclick" ktore wywoluje funkcje zmieniajaca dana tresc
 		btn.setAttribute("onclick", "change_status(" + [i] + ")");
-		document.getElementById("jeden_ul" + [i]).appendChild(btn);
+		//dodaje przycisk do odpowiedniego li
+		//w debugerze widac ze ul jest dodawany sam li, a potem przycisk dla niego
+		document.getElementById("jeden_li" + [i]).appendChild(btn);
 	}
-	var elems = document.getElementsByClassName('seen');
-	for(var i = 0; i < elems.length; i++) {
-		elems[i].setAttribute("class", "ziel"); 
-	}
-	
+	//koniec petli for to mozna wyswietlic flage
+	//ustawia element HTML o id "moviesCounterAll" na opowiednia flage
+document.getElementById("moviesCounterAll").innerHTML = flaga_wszystkich_filmow;	
 }
 let title_to_list = getAllInfo(moviesData);
-
+//ta_funkcja jest odpowiedzialna za zmiane statusu
 function change_status(i)
 {
-	var node = document.getElementById("jeden_ul" + [i]);
+	//wybierany jest odpowiedni node
+	var node = document.getElementById("jeden_li" + [i]);
+	//w nim wybierany jest odpowiedni przycisk
 	var buttin = document.getElementById("jeden_btn" + [i]);
-	var mSC = document.getElementById("moviesCounterSeen").innerHTML;
-	if (node.classList.contains("ziel"))
+	//klnieto w "movie seen" - czyli nie obejrzano
+	//to usun klase "seen", zmien tresc, dekrementuj licznik widzianych filmow
+	//jezeli klnieto w "movie not seen" - czyli obejrzano to inkrementuj 
+	//to dodaj klase "seen", zmien tresc, inkrementuj licznik widzianych filmow
+	if (node.classList.contains("seen"))
 	 {
 		node.classList.remove("seen");
-			node.classList.remove("ziel");
-		node.style.color = null;
 		buttin.childNodes[0].nodeValue = "Movie not seen";
-	SeenResult--;
-			
-			   document.getElementById("moviesCounterSeen").innerHTML = SeenResult;
+		--SeenResult;
+		document.getElementById("moviesCounterSeen").innerHTML = SeenResult;
 	}
 	else
 	 {
 		node.classList.add("seen");
-		node.classList.add("ziel");
-		node.style.color = 'green';
 		buttin.childNodes[0].nodeValue = "Movie seen";
-		SeenResult++;
-		   document.getElementById("moviesCounterSeen").innerHTML = SeenResult;
+		++SeenResult;
+		document.getElementById("moviesCounterSeen").innerHTML = SeenResult;
 
 	}
 }

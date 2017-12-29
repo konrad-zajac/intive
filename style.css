@@ -3,9 +3,14 @@
     font-weight: bold;
  
 }
+#moviesCountersContainer
+{
+	border:1px solid black;
+	margin-bottom: 100px;
+}
 #moviesListContainer
 {
-	margin-top: 100px;
+border:1px solid black;	
 }
 li
 {
@@ -23,6 +28,5 @@ li:hover
 }
 ul 
 {
-	margin-top: 100px;
   list-style-type: none;
 }

@@ -1,25 +1,25 @@
 //funkcja oblicza ile jest widzianych filmow
 function objectLength(obj)
   {
-  var seen_movies_flag = 0;
+  var seenMoviesFlag = 0;
   //for przeglada obiekty z tablicy 0,1,2..7
   for(var i in obj)
   {
   if (obj[i]["seen"] == "T")
     //jezeli obiekt ma atrybut "seen" == "T" to znaczy ze byl widziany i zwieksza odpowiednia flage
     {
-      seen_movies_flag++;
+      seenMoviesFlag++;
     }
   }
-  return seen_movies_flag;
+  return seenMoviesFlag;
   }
 //zmienna bierze to co zwraca funkcja "objectLength" kiedy damy jej tablice
-var seen_result = objectLength(moviesData);   
-   document.getElementById("moviesCounterSeen").innerHTML = seen_result;
+var seenResult = objectLength(moviesData);   
+   document.getElementById("moviesCounterSeen").innerHTML = seenResult;
 //dalsza czesc zadanie 5, czyli wytworzenie listy filmow
 function getAllInfo(obj)
 {
-  var all_movies_flag = 0;   
+  var allMoviesFlag = 0;   
   //tu jest tworzone 6 tablic, ktore beda sluzyly do przechowywania zmiennych
   var id = [];
   var year = [];
@@ -31,7 +31,7 @@ function getAllInfo(obj)
   for (var i in obj)
   {  
     //ta flaga jest zwiekszana dla kazdego filmu
-    all_movies_flag++;
+    allMoviesFlag++;
     //to tych 6 tablic przypisywane sa odpowiednie dane dla kazdego elementu
     id[i] = obj[i]["id"];
     year[i] = obj[i]["year"];
@@ -40,40 +40,40 @@ function getAllInfo(obj)
     summary[i] = obj[i]["summary"]; 
     seen[i] = obj[i]["seen"]; 
     //tworzone sa stringi zawierajace etykiety oraz odpowiednie dane dla kazdego li
-    let string_id = "id:" + id[i];
-    let string_year = "year:" + year[i];
-    let string_title = "title:" + title[i];
-    let string_genre = "genre:" + genre[i];
-    let string_summary = "summary:" + summary[i];
-    let string_seen = "seen:" + seen[i];
+    let stringId = "id:" + id[i];
+    let stringYear = "year:" + year[i];
+    let stringTitle = "title:" + title[i];
+    let stringGenre = "genre:" + genre[i];
+    let stringSummary = "summary:" + summary[i];
+    let stringSeen = "seen:" + seen[i];
     //tworzony jest element <li></li>
     var node = document.createElement("LI" );
     //dodawany jest id (i kolejne 5 atrybotow) i dodawany do nod'a
-    var textnode = document.createTextNode(string_id);
+    var textnode = document.createTextNode(stringId);
     node.appendChild(textnode);
     //po kazdej parze dodawany jest </br>
     var br = document.createElement("br");
     node.appendChild(br);
 
-    var textnode = document.createTextNode(string_year);
+    var textnode = document.createTextNode(stringYear);
     node.appendChild(textnode);
 
     var br = document.createElement("br")
     node.appendChild(br);
 
-    var textnode = document.createTextNode(string_title);
+    var textnode = document.createTextNode(stringTitle);
     node.appendChild(textnode);
 
     var br = document.createElement("br")
     node.appendChild(br);
 
-    var textnode = document.createTextNode(string_genre);
+    var textnode = document.createTextNode(stringGenre);
     node.appendChild(textnode);
 
     var br = document.createElement("br")
     node.appendChild(br);
 
-    var textnode = document.createTextNode(string_summary);
+    var textnode = document.createTextNode(stringSummary);
     node.appendChild(textnode);
 
     var br = document.createElement("br")
@@ -90,7 +90,7 @@ function getAllInfo(obj)
         var button_conent = document.createTextNode("Movie not seen");
       }
     //dodaje unikalny id do li
-    node.setAttribute("id", "jeden_li" + [i]); 
+    node.setAttribute("id", "single_li" + [i]); 
     //dodaje calego nod'a
     document.getElementById("moviesList").appendChild(node);
     //tworzy pojedynczy przycisk
@@ -98,26 +98,26 @@ function getAllInfo(obj)
     //dodaje tresc do przycisku
     btn.appendChild(button_conent);
     //dodaje unikalny id do przycisku
-    btn.setAttribute("id", "jeden_btn" + [i] ); 
+    btn.setAttribute("id", "singleBtn" + [i] ); 
     //dodaje wydarzenie "onclick" ktore wywoluje funkcje zmieniajaca dana tresc
-    btn.setAttribute("onclick", "change_status(" + [i] + ")");
+    btn.setAttribute("onclick", "changeStatus(" + [i] + ")");
     //dodaje przycisk do odpowiedniego li
     //w debugerze widac ze ul jest dodawany sam li, a potem przycisk dla niego
-    document.getElementById("jeden_li" + [i]).appendChild(btn);
+    document.getElementById("single_li" + [i]).appendChild(btn);
   }
   //koniec petli for to mozna wyswietlic flage
   //ustawia element HTML o id "moviesCounterAll" na opowiednia flage
-document.getElementById("moviesCounterAll").innerHTML = all_movies_flag;  
+document.getElementById("moviesCounterAll").innerHTML = allMoviesFlag;  
 }
 let title_to_list = getAllInfo(moviesData);
 //ta_funkcja jest odpowiedzialna za zmiane statusu
-function change_status(i)
+function changeStatus(i)
 {
   //wybierany jest odpowiedni node
-  var node = document.getElementById("jeden_li" + [i]);
+  var node = document.getElementById("single_li" + [i]);
   //w nim wybierany jest odpowiedni przycisk
-  var buttin = document.getElementById("jeden_btn" + [i]);
-  //klnieto w "movie seen" - czyli nie obejrzano
+  var buttin = document.getElementById("singleBtn" + [i]);
+  //kliknieto w "movie seen" - czyli nie obejrzano
   //to usun klase "seen", zmien tresc, dekrementuj licznik widzianych filmow
   //jezeli klnieto w "movie not seen" - czyli obejrzano to inkrementuj 
   //to dodaj klase "seen", zmien tresc, inkrementuj licznik widzianych filmow
@@ -125,14 +125,14 @@ function change_status(i)
   {
     node.classList.remove("seen");
     buttin.childNodes[0].nodeValue = "Movie not seen";
-    --seen_result;
-    document.getElementById("moviesCounterSeen").innerHTML = seen_result;
+    --seenResult;
+    document.getElementById("moviesCounterSeen").innerHTML = seenResult;
   }
   else
   {
     node.classList.add("seen");
     buttin.childNodes[0].nodeValue = "Movie seen";
-    ++seen_result;
-    document.getElementById("moviesCounterSeen").innerHTML = seen_result;
+    ++seenResult;
+    document.getElementById("moviesCounterSeen").innerHTML = seenResult;
   }
 }

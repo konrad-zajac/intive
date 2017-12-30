@@ -1,88 +1,69 @@
-//wartosc widzianych filmow jest modyfikowana
+document.getElementById("moviesCounterAll").innerHTML = moviesData.length;  
+//druga wartosc, czyli widziane filmy jest modyfikowana
 //dlatego jest w osobnej funkcji
+
 let seenMoviesFunction = (obj) => 
 {
   let seenMoviesFlag = 0;  
     for(let i in obj)
   {
-  if (obj[i]["seen"] == "T")
-    {
-      seenMoviesFlag++;
-    }
+    (obj[i]["seen"] == "T") ? seenMoviesFlag++ : console.log('');
   }
   return seenMoviesFlag;
 }
+
 var seenResult = seenMoviesFunction(moviesData);   
-   document.getElementById("moviesCounterSeen").innerHTML = seenResult;
+document.getElementById("moviesCounterSeen").innerHTML = seenResult;
 //dalsza czesc zadanie 5, czyli wytworzenie listy filmow
 function getAllInfo(obj)
 {
-  var allMoviesFlag = 0;   
   let id = [], year = [], title = [], genre = [], summary = [], seen = [];
-  for (let i in obj)
+  for (let mainIterator in obj)
   {  
-    allMoviesFlag++;
     //tworzony jest element <li></li> jako node
     // kolejnie dodawane są kolrjne elementy oraz </br>
-    var node = document.createElement("LI" );
-    var br = document.createElement("br");
-    var textnode = document.createTextNode("id: " + obj[i]["id"]);
-    node.appendChild(textnode);
-    var br = document.createElement("br");
-    node.appendChild(br);
-    var textnode = document.createTextNode("year:" + obj[i]["year"]);
-    node.appendChild(textnode);
-    var br = document.createElement("br")
-    node.appendChild(br);
-    var textnode = document.createTextNode("title:" + obj[i]["title"]);
-    node.appendChild(textnode);
-    var br = document.createElement("br")
-    node.appendChild(br);
-    var textnode = document.createTextNode("genre:" + obj[i]["genre"]);
-    node.appendChild(textnode);
-    var br = document.createElement("br")
-    node.appendChild(br);
-    var textnode = document.createTextNode("summary:" + obj[i]["summary"]);
-    node.appendChild(textnode);
-    var br = document.createElement("br")
-    node.appendChild(br);
-    //obsluga graficznego elementu
-    (obj[i]["seen"].includes("T")) ? node.classList.add("seen") : node.classList.add("notSeen");
-      if (obj[i]["seen"].includes("T"))  
-      {
-        var buttonContent   = document.createTextNode("Movie seen");
-      }
-      else
-      {
-        var buttonContent = document.createTextNode("Movie not seen");
-      }
-    node.setAttribute("id", "single_li" + [i]); 
+       
+    node = document.createElement("LI");
+      textnode = document.createTextNode("id: " + obj[mainIterator]["id"]);
+      node.appendChild(textnode);
+      br = document.createElement("br");
+      node.appendChild(br);
+      textnode = document.createTextNode("year:" + obj[mainIterator]["year"]);
+      node.appendChild(textnode);
+      br = document.createElement("br")
+      node.appendChild(br);
+      textnode = document.createTextNode("title:" + obj[mainIterator]["title"]);
+      node.appendChild(textnode);
+      br = document.createElement("br")
+      node.appendChild(br);
+      textnode = document.createTextNode("genre:" + obj[mainIterator]["genre"]);
+      node.appendChild(textnode);
+      br = document.createElement("br")
+      node.appendChild(br);
+      textnode = document.createTextNode("summary:" + obj[mainIterator]["summary"]);
+      node.appendChild(textnode);
+      br = document.createElement("br")
+      node.appendChild(br);
+      (obj[mainIterator]["seen"].includes("T")) ? node.classList.add("seen") : node.classList.add("notSeen");
+      node.setAttribute("id", "single_li" + [mainIterator]); 
     document.getElementById("moviesList").appendChild(node);
-    var btn = document.createElement("BUTTON");
-    btn.appendChild(buttonContent);
-    btn.setAttribute("id", "singleBtn" + [i] ); 
-    btn.setAttribute("onclick", "changeStatus(" + [i] + ")");
-    document.getElementById("single_li" + [i]).appendChild(btn);
-  }
-document.getElementById("moviesCounterAll").innerHTML = allMoviesFlag;  
-}
-let title_to_list = getAllInfo(moviesData);
 
-function changeStatus(i)
+    //obsluga graficznego elementu
+    var btn = document.createElement("BUTTON");
+      var buttonInitialContent = ((obj[mainIterator]["seen"].includes("T")) ? document.createTextNode("Movie seen") : document.createTextNode("Movie not seen")) ;
+      btn.appendChild(buttonInitialContent);
+      btn.setAttribute("id", "singleBtn" + [mainIterator] ); 
+      btn.setAttribute("onclick", "changeStatus(" + [mainIterator] + ")");
+    document.getElementById("single_li" + [mainIterator]).appendChild(btn);
+  }
+}
+let listOfMovies = getAllInfo(moviesData);
+
+function changeStatus(mainIterator)
 {
-  let node = document.getElementById("single_li" + [i]), buttin = document.getElementById("singleBtn" + [i]);
-  if (node.classList.contains("seen"))
-  {
-    node.classList.remove("seen");
-    buttin.childNodes[0].nodeValue = "Movie not seen";
-    --seenResult;
-    document.getElementById("moviesCounterSeen").innerHTML = seenResult;
-  }
-  else
-  {
-    node.classList.add("seen");
-    buttin.childNodes[0].nodeValue = "Movie seen";
-    ++seenResult;
-    document.getElementById("moviesCounterSeen").innerHTML = seenResult;
-  }
+  let node = document.getElementById("single_li" + [mainIterator]), clickedButton = document.getElementById("singleBtn" + [mainIterator]);
+  (node.classList.contains("seen"))? --seenResult: ++seenResult ;
+  (node.classList.contains("seen"))? node.classList.remove("seen"): node.classList.add("seen") ;
+  (node.classList.contains("seen"))? clickedButton.childNodes[0].nodeValue  = "Movie seen":clickedButton.childNodes[0].nodeValue = "Movie not seen";
+ document.getElementById("moviesCounterSeen").innerHTML = seenResult;
 }

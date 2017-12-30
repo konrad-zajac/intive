@@ -9,3 +9,6 @@ v0.0.2----
 +Jednolinijkowe if'y
 v0.0.3----
 +CSS w head.
+v0.0.4----
++ECM 2015
++drobne poprawki

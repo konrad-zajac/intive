@@ -7,3 +7,5 @@ v0.0.2----
 +Od listy liczników do filmów jest 100px
 +Funkcje z ES 2015
 +Jednolinijkowe if'y
+v0.0.3----
++CSS w head.

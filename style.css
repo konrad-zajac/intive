@@ -1,16 +1,19 @@
-.liczniki
+.moviesCounter
 {
     font-weight: bold;
  
 }
 #moviesCountersContainer
 {
-	border:1px solid black;
+
 	margin-bottom: 100px;
+	padding: 0;
+
+
 }
 #moviesListContainer
 {
-border:1px solid black;	
+
 }
 li
 {
@@ -26,7 +29,20 @@ li:hover
     text-decoration: underline;
 
 }
+#MoviesList
+{
+	padding: 0;
+	margin: 0 ;
+}
 ul 
 {
+	position:absolute;
+	top:100px;
+border:1px solid black;
   list-style-type: none;
+padding: 0;
+}
+li
+{
+	padding: 0;
 }

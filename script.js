@@ -62,8 +62,21 @@ let listOfMovies = getAllInfo(moviesData);
 function changeStatus(mainIterator)
 {
   let node = document.getElementById("single_li" + [mainIterator]), clickedButton = document.getElementById("singleBtn" + [mainIterator]);
-  (node.classList.contains("seen"))? --seenResult: ++seenResult ;
-  (node.classList.contains("seen"))? node.classList.remove("seen"): node.classList.add("seen") ;
-  (node.classList.contains("seen"))? clickedButton.childNodes[0].nodeValue  = "Movie seen":clickedButton.childNodes[0].nodeValue = "Movie not seen";
+  if (node.classList.contains("seen"))
+  {
+    --seenResult;
+   node.classList.remove("seen") ;
+   clickedButton.childNodes[0].nodeValue  = "Movie seen";
+
+  }
+else 
+ {
+ ++seenResult ;
+  node.classList.add("seen") ;
+  clickedButton.childNodes[0].nodeValue = "Movie not seen"; 
+}
+  // (node.classList.contains("seen"))? --seenResult: ++seenResult ;
+  // (node.classList.contains("seen"))? node.classList.remove("seen"): node.classList.add("seen") ;
+  // (node.classList.contains("seen"))? clickedButton.childNodes[0].nodeValue  = "Movie seen":clickedButton.childNodes[0].nodeValue = "Movie not seen";
  document.getElementById("moviesCounterSeen").innerHTML = seenResult;
 }

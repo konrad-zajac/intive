@@ -37,12 +37,34 @@ li:hover
 ul 
 {
 	position:absolute;
+	left: 50%;
 	top:100px;
-border:1px solid black;
+
   list-style-type: none;
 padding: 0;
+align-self: center;
 }
 li
 {
 	padding: 0;
+}
+table
+{
+    border-collapse: collapse;
+	max-width: 65%;
+}
+
+table, th, td 
+{
+    border: 1px solid black;
+text-align: left;
+margin: 2%;
+}
+td
+{
+padding:0 10% 0 0 1%;	
+}
+#summary
+{
+	padding: 10px;
 }

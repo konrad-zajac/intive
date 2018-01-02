@@ -1,4 +1,4 @@
-document.getElementById("moviesCounterAll").innerHTML = moviesData.length;  
+document.getElementById("moviesCounterAll").innerHTML = moviesData.length; 
 //druga wartosc, czyli widziane filmy jest modyfikowana
 //dlatego jest w osobnej funkcji
 
@@ -15,68 +15,103 @@ let seenMoviesFunction = (obj) =>
 var seenResult = seenMoviesFunction(moviesData);   
 document.getElementById("moviesCounterSeen").innerHTML = seenResult;
 //dalsza czesc zadanie 5, czyli wytworzenie listy filmow
+
 function getAllInfo(obj)
 {
-  let id = [], year = [], title = [], genre = [], summary = [], seen = [];
-  for (let mainIterator in obj)
-  {  
-    //tworzony jest element <li></li> jako node
-    // kolejnie dodawane są kolrjne elementy oraz </br>
-       
-    node = document.createElement("LI");
-      textnode = document.createTextNode("id: " + obj[mainIterator]["id"]);
-      node.appendChild(textnode);
-      br = document.createElement("br");
-      node.appendChild(br);
-      textnode = document.createTextNode("year:" + obj[mainIterator]["year"]);
-      node.appendChild(textnode);
-      br = document.createElement("br")
-      node.appendChild(br);
-      textnode = document.createTextNode("title:" + obj[mainIterator]["title"]);
-      node.appendChild(textnode);
-      br = document.createElement("br")
-      node.appendChild(br);
-      textnode = document.createTextNode("genre:" + obj[mainIterator]["genre"]);
-      node.appendChild(textnode);
-      br = document.createElement("br")
-      node.appendChild(br);
-      textnode = document.createTextNode("summary:" + obj[mainIterator]["summary"]);
-      node.appendChild(textnode);
-      br = document.createElement("br")
-      node.appendChild(br);
-      (obj[mainIterator]["seen"].includes("T")) ? node.classList.add("seen") : node.classList.add("notSeen");
-      node.setAttribute("id", "single_li" + [mainIterator]); 
-    document.getElementById("moviesList").appendChild(node);
+  obj.forEach(getSingleData);
+}
+function getSingleData(element)
+{
+  let markup = `
+    <li class="${(element.seen == "T" )? `seen` :`unseen` }" id="singleLi${element.id}">
+    <table>
+      <tr>
+        <td>
+        id:
+        </td>
+        <td>
+        ${element.id}
+        </td>
+      <tr>
 
-    //obsluga graficznego elementu
-    var btn = document.createElement("BUTTON");
-      var buttonInitialContent = ((obj[mainIterator]["seen"].includes("T")) ? document.createTextNode("Movie seen") : document.createTextNode("Movie not seen")) ;
-      btn.appendChild(buttonInitialContent);
-      btn.setAttribute("id", "singleBtn" + [mainIterator] ); 
-      btn.setAttribute("onclick", "changeStatus(" + [mainIterator] + ")");
-    document.getElementById("single_li" + [mainIterator]).appendChild(btn);
-  }
+      <tr>
+        <td>
+        year:
+        </td>
+        <td>
+        ${element.year}
+        </td>
+      <tr>
+
+      <tr>
+        <td>
+        title
+        </td>
+        <td>
+        ${element.title}
+        </td>
+      <tr>
+
+      <tr>
+        <td>
+        genre:
+        </td>
+        <td>
+        ${element.genre}
+        </td>
+      <tr>
+
+      <tr id="summary">
+        <td>
+        summary:
+        </td>
+        <td>
+        ${element.summary}
+        </td>
+      <tr>
+
+      <tr>
+        <td>
+      state:
+        </td>
+        <td>
+        
+      <button onclick="changeStatus(${element.id})">
+                  ${(element.seen == "T" )? `seen` :`unseen` }
+      </button> 
+        </td>
+      <tr>
+
+
+    </table>
+
+    </li>
+    </br>
+  `;
+  ul = document.getElementById("moviesList");
+  ul.insertAdjacentHTML("beforeend", markup);
 }
 let listOfMovies = getAllInfo(moviesData);
 
-function changeStatus(mainIterator)
+function changeStatus(i)
 {
-  let node = document.getElementById("single_li" + [mainIterator]), clickedButton = document.getElementById("singleBtn" + [mainIterator]);
-  if (node.classList.contains("seen"))
-  {
-    --seenResult;
-   node.classList.remove("seen") ;
-   clickedButton.childNodes[0].nodeValue  = "Movie seen";
+  let nodeIDToChange = ("singleLi" + i);
+  let nodeElement = document.getElementById(nodeIDToChange);
+  let buttonElement = nodeElement.getElementsByTagName("button");
 
+  if (nodeElement.classList.contains("seen"))
+  {
+    nodeElement.classList.remove("seen");
+    nodeElement.classList.add("unseen");
+    buttonElement[0].childNodes[0].textContent = "unseen";
+    seenResult--;
   }
-else 
- {
- ++seenResult ;
-  node.classList.add("seen") ;
-  clickedButton.childNodes[0].nodeValue = "Movie not seen"; 
-}
-  // (node.classList.contains("seen"))? --seenResult: ++seenResult ;
-  // (node.classList.contains("seen"))? node.classList.remove("seen"): node.classList.add("seen") ;
-  // (node.classList.contains("seen"))? clickedButton.childNodes[0].nodeValue  = "Movie seen":clickedButton.childNodes[0].nodeValue = "Movie not seen";
- document.getElementById("moviesCounterSeen").innerHTML = seenResult;
+  else
+  {
+    nodeElement.classList.remove("unseen");
+    nodeElement.classList.add("seen");
+    buttonElement[0].childNodes[0].textContent = "seen";
+    seenResult++;
+  }
+  document.getElementById("moviesCounterSeen").innerHTML = seenResult;
 }

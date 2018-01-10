@@ -1,6 +1,6 @@
-import { cube, foo } from './movies-counter.js';
-console.log(cube(3)); // 27
-console.log(foo);    // 4.555806215962888
+import setCounterOfTo from './movies-counter.js';
+setCounterOfTo('moviesCounterAll',3); 
+
 
 // document.getElementById("moviesCounterAll").innerHTML = moviesData.length; 
 // //druga wartosc, czyli widziane filmy jest modyfikowana

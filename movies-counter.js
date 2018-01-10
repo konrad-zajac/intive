@@ -1,5 +1,4 @@
-function cube(x) {
-  return x * x * x;
+export default function setCounterOfTo(x, y) 
+{
+	document.getElementById(x).innerHTML = y;
 }
-const foo = Math.PI + Math.SQRT2;
-export { cube, foo };

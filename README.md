@@ -44,4 +44,9 @@ v0.1.3
     * Wszystkie funkcje z zadnia 6 działają
 v0.1.4
 
-    * Zadnia 8 dorobione 
+    * Zadnie 8 dorobione
+
+v0.1.5
+
+    * Zadnie 6 poprawione (zamiast funkcj klasa)
+    * Funkcje get i set dalej się składają z dwóch

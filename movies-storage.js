@@ -31,7 +31,18 @@ export default function MoviesStorage()
     	
 		if (id && data)
 		{
-		return 'id ='+ id + ' data = '+ data;
+		  var size = 0, toFindId = id, title;
+            for (title in this.movies) 
+            {
+                if (this.movies[title]["id"] == toFindId)
+                {
+                    //console.log('movie to modify' + JSON.stringify(this.movies[title]));
+                     let db = this.movies;
+                   this.movies[title]["id"] = data;
+
+                    return this.movies;    
+                } 
+            }
 		}
 		else if (!(Number.isInteger(id)))
 		{

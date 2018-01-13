@@ -17,8 +17,9 @@ var ins = new MoviesStorage();
 // [OK] funkcja set z parametrem data
 //console.log(ins.set("foo"));
 
-// [TODO] funkcja set z parametrem data
-//console.log(ins.set(1,"foo"));
+// [OK] funkcja set z parametrem data
+//
+console.log(ins.set(1,101));
 
 // [OK] funkcja remove z id
 // 	

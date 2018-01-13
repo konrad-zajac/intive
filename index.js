@@ -1,7 +1,6 @@
- import MoviesStorage from './movies-storage.js'
-//import Rectangle from './movies-storage.js';
+import MoviesStorage from './movies-storage.js'
 import setCounterOfTo from './movies-counter.js';
-
+	
 //odkomentowac zeby zobaczyc czy funkcja setCounterOfTo dziala
  
 // setCounterOfTo('moviesCounterAll',33); 

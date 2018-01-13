@@ -11,7 +11,7 @@ v0.0.2
 
     * Od listy liczników do filmów jest 100px
     * Funkcje z ES 2015
-    * Jednolinijkowe if'y
+    * Ternary if'y
 
 v0.0.3
 
@@ -20,16 +20,16 @@ v0.0.3
 v0.0.4
 
     * ECM 2015
-    * drobne poprawki
+    * Drobne poprawki
 
 Koniec 1 *  Początek 2
 
 v0.1.0
 
-    * 1 *  3 zadanie 
+    * Zadanie od 1 do 3 
     * Początek 4 zadania
     * Dodany moduł działa z tymczasowymi danymi 
-    * funkcja z modułu przyjmuje dwa parametry i jest domyślnie exportowana
+    * Funkcja z modułu przyjmuje dwa parametry i jest domyślnie exportowana
 
 v0.1.1
 
@@ -44,9 +44,14 @@ v0.1.3
     * Wszystkie funkcje z zadnia 6 działają
 v0.1.4
 
-    * Zadnie 8 dorobione
+    * Zadnie 8 dodane
 
 v0.1.5
 
     * Zadnie 6 poprawione (zamiast funkcj klasa)
     * Funkcje get i set dalej się składają z dwóch
+
+v0.1.6
+
+    * Zmienna moviessData nie jest oddzielną zmienną moviesData 
+    

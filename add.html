@@ -9,9 +9,41 @@
     <p>All: <span class="moviesCounter" id="anotherMoviesCounterAll"></span></p>
     <p>Viewed: <span class="moviesCounter" id="anotherMoviesCounterSeen"></span></p>
 </div>
-<div id="formContainer"></div>
+<div id="formContainer">
+	<form action="/my-handling-form-page" method="post">
+
+    <div>
+        <label for="id">id:</label>
+        <input type="text" id="film_id" name="film_name">
+ </br>
+
+        <label for="title">title:</label>
+        <input type="text" id="title" name="film_name">
+ </br>
+
+        <label for="year">year:</label>
+        <input type="text" id="year" name="film_year">
+ </br>
+
+        <label for="genre">genre:</label>
+        <input type="text" id="genre" name="film_genre">
+ </br>
+
+        <label for="summary">summary:</label>
+        <input type="text" id="summary" name="film_summary">
+ </br>
+
+        <label for="seen">seen:</label>
+        <input type="text" id="seen" name="film_seen">
+ </br>
+          <button type="submit">Add movie</button>
+
+    </div>
+  
+</form>
+</div>
 <body>
-<a href="index.html" >index</a>	
+<a href="index.html" ><button type="submit">index</button></a>	
 </body>
 </body>
 </html>

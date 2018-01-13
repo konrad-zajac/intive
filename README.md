@@ -41,4 +41,7 @@ v0.1.2
 
 v0.1.3
 
-	* Wszystkie funkcje z zadnia 6 działają
+    * Wszystkie funkcje z zadnia 6 działają
+v0.1.4
+
+    * Zadnia 8 dorobione 

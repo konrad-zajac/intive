@@ -14,15 +14,16 @@ var ins = new MoviesStorage();
 // [OK] funkcja get z parametrem 
 // console.log(ins.get(2));
 
-// [TODO] funkcja set z parametrem data
-// 
-console.log(ins.set("foo"));
+// [OK] funkcja set z parametrem data
+//console.log(ins.set("foo"));
 
 // [TODO] funkcja set z parametrem data
-// console.log(ins.set(1,"foo"));
+//console.log(ins.set(1,"foo"));
 
 // [OK] funkcja remove z id
-// console.log(ins.remove(2));
+// 	
+		// console.log(ins.remove(2));
+		// console.log(ins.remove(1));
 
 
 // document.getElementById("moviesCounterAll").innerHTML = moviesData.length; 

@@ -1,14 +1,15 @@
+
 export default function MoviesStorage()
  {
  	this.movies = ((localStorage.getItem("movies")) && (JSON.parse(localStorage.getItem("movies")) instanceof Array)) ? "YoMo" : JSON.parse(localStorage.getItem("moviesString"));
 
- 	    this.greet = function()
+    this.greet = function()
     {
     	
         return 'Hello!';
     };
 
-       this.get = function get(id = 0)
+    this.get = function get(id = 0)
     {
     	if (id == 0)
     	{
@@ -26,16 +27,17 @@ export default function MoviesStorage()
     };
 
     this.set = function set(id,data)
-    {
+    {	
     	
 		if (id && data)
 		{
-		return 'id ='+ id + 'data = '+ data;
+		return 'id ='+ id + ' data = '+ data;
 		}
 		else if (!(Number.isInteger(id)))
 		{
 			let data = id;
-			return ('data = ' + data);
+            var len = this.movies.push(data);
+			return this.movies;
 		}	
     };
     

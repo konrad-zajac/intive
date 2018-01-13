@@ -59,4 +59,9 @@ v0.1.7
 
     * Form dodany. 
     * Zadanie 8 poprawione. 
+
+v0.1.8
+
+    * Początek walidacji. 
+    
     

@@ -10,7 +10,7 @@
     <p>Viewed: <span class="moviesCounter" id="anotherMoviesCounterSeen"></span></p>
 </div>
 <div id="formContainer">
-	<form action="/my-handling-form-page" method="post">
+	<form name="myForm"  onsubmit="validate()" method="post">
 
     <div>
         <label for="id">id:</label>
@@ -36,14 +36,15 @@
         <label for="seen">seen:</label>
         <input type="text" id="seen" name="film_seen">
  </br>
-          <button type="submit">Add movie</button>
+          <button type="submit" >Add movie</button>
 
     </div>
   
 </form>
 </div>
 <body>
-<a href="index.html" ><button type="submit">index</button></a>	
+<a href="index.html"><button type="submit">index</button></a>	
+<script src="add.js"></script>
 </body>
 </body>
 </html>

@@ -1,30 +1,31 @@
-import MoviesStorage from './movies-storage.js'
+import MoviesStorage from './movies-storage.js';
 import setCounterOfTo from './movies-counter.js';
 	
-//odkomentowac zeby zobaczyc czy funkcja setCounterOfTo dziala
+//uncomment to check if function setCounterOfTo works
  
-// setCounterOfTo('moviesCounterAll',33); 
+//	 setCounterOfTo('moviesCounterAll',33); 
 // setCounterOfTo('moviesCounterSeen',3); 
 
-//odkomentowac zeby zobaczyc czy klasa MoviesStorage dziala
-// var ins = new foo();	
-// console.log(ins.hi);
+//uncomment to check if class MoviesStorage works
 //
-var ins = new MoviesStorage();
+ //var ins = new foo();	
+// console.log(ins.hi);
+
+//var ins = new MoviesStorage();
 //console.log(ins.greet());
-// [OK] funkcja get bez parametru
+// [OK] function get without parameter
  //console.log(ins.get());
 
-// [OK] funkcja get z parametrem 
+// [OK] function get with parameter
 // console.log(ins.get(2));
 
-// [OK] funkcja set z parametrem data
+// [OK] function set with parametrem data
 //console.log(ins.set("foo"));
 
-// [OK] funkcja set z parametrem data
+// [OK] function set with parametrem data
 //	console.log(ins.set(1,101));
 
-// [OK] funkcja remove z id
+// [OK] function remove with id
 // 	
 		// console.log(ins.remove(2));
 		// console.log(ins.remove(1));

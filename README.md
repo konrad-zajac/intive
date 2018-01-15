@@ -70,4 +70,10 @@ v0.1.9
     * Walidacja tytułu,rodzju i roku.
     * Walidacja cztereech cyfr <roku class=""></roku> 
     
+        
+v0.1.10
+
+    * Odtylizowanie
+    * Uprzątnięcie klasy
+    
     

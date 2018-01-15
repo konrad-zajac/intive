@@ -1,3 +1,10 @@
+import MoviesStorage from './movies-storage.js';
+var ins = new MoviesStorage();
+
+  ins.movies.forEach(function(entry)
+   {
+    console.log(entry["title"]);
+  });
 
 function validate() 
 {
@@ -11,29 +18,30 @@ function validate()
     }
     else
     {
-      if (film_year)
-      {
-
-      }
-      else
-      {
-         if (film_genre)
-        {
-        
-        }
-        else
-        {
-            alert("Film genre is empty");
-           window.location.href = 'add.html';
-         
-        }
-          alert("Film year is empty");
-         window.location.href = 'add.html';
-       
-      }
-        alert("Film title is empty");
+         alert("Film title is empty");
        window.location.href = 'add.html'
     }
+      // if (film_year)
+      // {
+
+      // }
+      // else
+      // {
+      //    if (film_genre)
+      //   {
+        
+      //   } 
+      //   else
+      //   {
+      //       alert("Film genre is empty");
+      //      window.location.href = 'add.html';
+         
+      //   }
+      //     alert("Film year is empty");
+      //    window.location.href = 'add.html';
+       
+      // }
+     
 
     if (!(/^([0-9][0-9][0-9][0-9])$/.test(film_year)))
      {

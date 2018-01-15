@@ -3,48 +3,123 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Konrad Zając - zadanie Intive</title>
+    <style>
+table {
+    border-collapse: collapse;
+    margin-left: 40%;
+    margin-top: 2%;
+}
+
+table, td, th {
+    border: 1px solid black;
+    padding-right: 5%;
+
+}
+.cntr
+{
+    padding: 0 30% 0 30%;
+}
+
+#moviesCountersContainer
+{
+ margin:0 50% 0 40%;
+
+}
+p
+{
+ border: 1px solid black;   
+ margin-top: 0;
+ margin-bottom: 0;
+
+}
+nav
+{
+    border-bottom: 5px solid black;
+    margin-bottom: 2%;
+}
+</style>
 </head>
+<nav>
+<a href="index.html"><button type="submit">index</button></a>    
+</nav>
 <body>
 	<div id="moviesCountersContainer">
     <p>All: <span class="moviesCounter" id="anotherMoviesCounterAll"></span></p>
     <p>Viewed: <span class="moviesCounter" id="anotherMoviesCounterSeen"></span></p>
 </div>
 <div id="formContainer">
-	<form name="myForm"  onsubmit="validate()" method="post">
+<form name="myForm"  onsubmit="validate()" method="post">
+    <table>
+                 <tr>
+            <td class="cntr" colspan="2">
+                 New movie 
+            </td>
+        </tr>
+        <tr>
+            <td>
+                  <label for="id">id:</label>
+            </td>
+        
+            <td>
+          <input type="text" id="film_id" name="film_id">      
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="title">title:</label>
+            </td>
+      
+            <td>
+              <input type="text" id="title" name="film_title">
+            </td>
+        </tr>
+         <tr>
+            <td>
+                    <label for="year">year:</label>
+            </td>
+      
+            <td>
+              <input type="text" id="year" name="film_year">  
+            </td>
+        </tr>
+         <tr>
+            <td>
+                <label for="genre">genre:</label>
+            </td>
+      
+            <td>
+                <input type="text" id="genre" name="film_genre">
+            </td>
+        </tr>
+         <tr>
+            <td>
+                <label for="summary">summary:</label>
+            </td>
+      
+            <td>
+                <input type="text" id="summary" name="film_summary">
+            </td>
+        </tr>
+         <tr>
+            <td>
+                <label for="seen">seen:</label>
+            </td>
+      
+            <td>
+                        <input type="text" id="seen" name="film_seen">
+            </td>
+        </tr>
+         <tr>
+            <td class="cntr" colspan="2">
+                  <button type="submit" onclick="validate()">Add movie</button>
 
-    <div>
-        <label for="id">id:</label>
-        <input type="text" id="film_id" name="film_id">
- </br>
-
-        <label for="title">title:</label>
-        <input type="text" id="title" name="film_title">
- </br>
-
-        <label for="year">year:</label>
-        <input type="text" id="year" name="film_year">
- </br>
-
-        <label for="genre">genre:</label>
-        <input type="text" id="genre" name="film_genre">
- </br>
-
-        <label for="summary">summary:</label>
-        <input type="text" id="summary" name="film_summary">
- </br>
-
-        <label for="seen">seen:</label>
-        <input type="text" id="seen" name="film_seen">
- </br>
-          <button type="submit" >Add movie</button>
-
-    </div>
-  
+            </td>
+        </tr>
+    </table>
 </form>
 </div>
-<body>
-<a href="index.html"><button type="submit">index</button></a>	
-<script src="add.js"></script>
-</body>
+<script src="add.js"  type="module" ></script>	
+<!-- This worked in index.html, but here it's excluding the validation
+<script src="add.js" type="module"></script> -->
 </body>
 </html>

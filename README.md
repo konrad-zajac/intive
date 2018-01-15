@@ -65,3 +65,9 @@ v0.1.8
     * Początek walidacji. 
     
     
+v0.1.9
+
+    * Walidacja tytułu,rodzju i roku.
+    * Walidacja cztereech cyfr <roku class=""></roku> 
+    
+    

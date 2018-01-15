@@ -68,12 +68,18 @@ v0.1.8
 v0.1.9
 
     * Walidacja tytułu,rodzju i roku.
-    * Walidacja cztereech cyfr <roku class=""></roku> 
+    * Walidacja czterech cyfr roku.
     
         
 v0.1.10
 
-    * Odtylizowanie
+    * Ostylizowanie
     * Uprzątnięcie klasy
+
+v0.1.11
+
+    * osobne walidacja
+
     
+
     

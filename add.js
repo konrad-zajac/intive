@@ -14,34 +14,31 @@ function validate()
    
     if (film_title)
     {
-          
+    //TODO      
     }
     else
     {
          alert("Film title is empty");
        window.location.href = 'add.html'
     }
-      // if (film_year)
-      // {
-
-      // }
-      // else
-      // {
-      //    if (film_genre)
-      //   {
-        
-      //   } 
-      //   else
-      //   {
-      //       alert("Film genre is empty");
-      //      window.location.href = 'add.html';
-         
-      //   }
-      //     alert("Film year is empty");
-      //    window.location.href = 'add.html';
-       
-      // }
-     
+    if (film_year)
+    {
+    //TODO      
+    }
+    else
+    {
+         alert("Film year is empty");
+       window.location.href = 'add.html'
+    }
+    if (film_genre)
+    {
+    //TODO      
+    }
+    else
+    {
+         alert("Film genre is empty");
+       window.location.href = 'add.html'
+    }
 
     if (!(/^([0-9][0-9][0-9][0-9])$/.test(film_year)))
      {

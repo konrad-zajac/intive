@@ -19,7 +19,7 @@ v0.0.3
 
 v0.0.4
 
-    * ECM 2015.
+    * ECMA Script.
     * Drobne poprawki.
 
 Koniec 1 *  Początek 2
@@ -79,6 +79,11 @@ v0.1.10
 v0.1.11
 
     * osobne walidacja
+
+
+v0.1.12
+
+    * Ostatni commit
 
     
 

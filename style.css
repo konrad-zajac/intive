@@ -1,8 +1,8 @@
-
 .seen
 {
 	color: green;
 }
+
 ul 
 {
 	position:absolute;
@@ -33,8 +33,8 @@ table, th, td
 .moviesCounter
 {
     font-weight: bold;
- 
 }
+
 #moviesCountersContainer
 {
 	border: 0;
